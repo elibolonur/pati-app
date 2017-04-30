@@ -21,7 +21,7 @@ import { UserInfoPage } from '../pages/userinfo-page/userinfo';
 
 // Templates
 import { AreaTemplate, AreasHeader, AreaSeparator } from '../components/templates/area-templates';
-import { TopicTemplate, TopicsHeader } from '../components/templates/topic-templates';
+import { TopicTemplate, TopicsHeader, StickyHeader } from '../components/templates/topic-templates';
 
 // Providers
 import { PatiService } from '../providers/pati.service';
@@ -42,6 +42,7 @@ import { Authentication } from '../providers/auth.service';
     UserInfoPage,
     TopicsHeader,
     TopicTemplate,
+    StickyHeader
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ export class AreaPage {
 
   area: any;
   topics: any;
+  stickies: any;
 
   constructor(public navCtrl: NavController,
               private navParams: NavParams,
@@ -47,6 +48,9 @@ export class AreaPage {
   }
 
   private filterTopics() {
-    this.topics = this.topics.filter(x => x.title !== "");
+    this.stickies = this.topics.filter(x => x.topicType && x.topicType.includes("sticky"));
+    this.topics = this.topics.filter(
+      (x => x.title !== "" && !x.topicType ||
+      (x.topicType && (x.topicType.includes("message_new") || x.topicType.includes("message_locked")))));
   }
 }

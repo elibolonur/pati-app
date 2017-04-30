@@ -64,14 +64,23 @@ export class TopicTemplate {
 }
 
 @Component({
+  selector: '[sticky-header]',
+  host: {'class': 'sticky-header'},
+  template: `
+    <ion-row align-items-stretch>
+      <ion-col col-12>Stickies</ion-col>
+    </ion-row>`
+})
+export class StickyHeader {}
+
+@Component({
   selector: '[topics-header]',
   host: {'class': 'topics-header'},
   template: `
     <ion-row align-items-stretch>
       <ion-col col-1></ion-col>
-      <ion-col col-7>Alan</ion-col>
-      <ion-col col-4 text-center>Son Mesaj</ion-col>
+      <ion-col col-8>Konular</ion-col>
+      <ion-col col-3 text-center>Son Mesaj</ion-col>
     </ion-row>`
 })
-export class TopicsHeader {
-}
+export class TopicsHeader {}

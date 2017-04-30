@@ -45,13 +45,18 @@
   font-size: 10px;
 }
 
+.platform-ios .area-container {
+  margin-top: 2.9rem;
+}
+
 .area-container {
+
+  border: 1px solid $pati_red;
 
   ion-grid {
     padding: 0;
     border-bottom: 0.5px solid $pati_red;
   }
-  border: 1px solid $pati_red;
 
   .areas-header {
     background-color: $pati_red;
@@ -93,15 +98,27 @@
 
 .topic-container {
 
+  border: 1px solid $pati_red;
+
   ion-grid {
     padding: 0;
     border-bottom: 0.5px solid $pati_red;
   }
-  border: 1px solid $pati_red;
 
   .topics-header {
     background-color: $pati_red;
     font-weight: 600;
+    color: white;
+
+    [col-3] {
+      font-size: 12px;
+    }
+  }
+
+  .sticky-header {
+    background-color: $pati_red;
+    font-weight: 600;
+    font-size: 15px;
     color: white;
   }
 

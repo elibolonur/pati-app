@@ -18,8 +18,17 @@
   <ion-card no-padding class="topic-container" *ngIf="topics">
     <ion-card-content no-padding>
 
-      <!--<ion-grid class="topics-header" topics-header></ion-grid>-->
+      <ion-grid class="sticky-header" sticky-header (click)="stickiesHide = !stickiesHide"></ion-grid>
 
+      <ion-grid area-topic-row [topic]="sticky" *ngFor="let sticky of stickies" [hidden]="!stickiesHide"></ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card no-padding class="topic-container" *ngIf="topics">
+    <ion-card-content no-padding>
+
+      <!--<ion-grid class="topics-header" topics-header></ion-grid>-->
       <ion-grid area-topic-row [topic]="topic" *ngFor="let topic of topics"></ion-grid>
 
     </ion-card-content>
