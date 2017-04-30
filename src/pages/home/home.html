@@ -1,0 +1,73 @@
+<!--<ion-header>-->
+<!--<ion-navbar>-->
+<!--<ion-title text-center>[ Forum Anasayfa ]</ion-title>-->
+<!--</ion-navbar>-->
+<!--</ion-header>-->
+
+<!--<ion-header>-->
+  <!--<ion-grid style="position: fixed; height: 30px; background: #8C1B1B; color: #fff; padding: 0; font-weight: 600">-->
+    <!--<ion-row align-items-stretch>-->
+      <!--<ion-col col-1></ion-col>-->
+      <!--<ion-col col-7>Alan</ion-col>-->
+      <!--<ion-col col-4>Son Mesaj</ion-col>-->
+    <!--</ion-row>-->
+  <!--</ion-grid>-->
+<!--</ion-header>-->
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="getMainPage($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Yenile?">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card no-padding class="area-container">
+    <ion-card-content no-padding>
+
+
+      <ion-grid class="areas-header" areas-header></ion-grid>
+
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of favorites"></ion-grid>
+
+      <ion-grid area-separator [name]="'Paticik.com'" (click)="paticikcomHide = !paticikcomHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of paticikcom" [hidden]="paticikcomHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'Pati Tech'" (click)="patitechHide = !patitechHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of patitech" [hidden]="patitechHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'Pati Zone'" (click)="patizoneHide = !patizoneHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of patizone" [hidden]="patizoneHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'İlgi Alanları'" (click)="ilgiHide = !ilgiHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of ilgialanlari" [hidden]="ilgiHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'Yaşam'" (click)="yasamHide = !yasamHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of yasam" [hidden]="yasamHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'Pati-Do'" (click)="patidoHide = !patidoHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of patido" [hidden]="patidoHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'Spor'" (click)="sporHide = !sporHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of spor" [hidden]="sporHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'Oyunlar'" (click)="oyunlarHide = !oyunlarHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of oyunlar" [hidden]="oyunlarHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'MMPORG Türleri'" (click)="mmporgHide = !mmporgHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of mmporg" [hidden]="mmporgHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'Paticik.com Oyun Sunucuları'" (click)="sunucuHide = !sunucuHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of oyunsunuculari" [hidden]="sunucuHide"></ion-grid>
+
+      <ion-grid area-separator [name]="'Diğer'" (click)="digerHide = !digerHide"></ion-grid>
+      <ion-grid mainpage-area-row [area]="area" *ngFor="let area of diger" [hidden]="digerHide"></ion-grid>
+
+      <div *ngIf="moderasyon">
+        <ion-grid area-separator [name]="'Yönetici Alanı '" (click)="moderasyonHide = !moderasyonHide"></ion-grid>
+        <ion-grid mainpage-area-row [area]="area" *ngFor="let area of moderasyon" [hidden]="moderasyonHide"></ion-grid>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

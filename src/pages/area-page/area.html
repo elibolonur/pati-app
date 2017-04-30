@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{area.title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="getArea($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Yenile?">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card no-padding class="topic-container" *ngIf="topics">
+    <ion-card-content no-padding>
+
+      <!--<ion-grid class="topics-header" topics-header></ion-grid>-->
+
+      <ion-grid area-topic-row [topic]="topic" *ngFor="let topic of topics"></ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

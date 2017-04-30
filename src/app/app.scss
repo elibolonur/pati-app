@@ -1,0 +1,161 @@
+// http://ionicframework.com/docs/v2/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@import '../theme/variables';
+
+.bg_red {
+  background-color: red;
+}
+
+.bg_yellow {
+  background-color: yellow;
+}
+
+.bg_green {
+  background-color: green;
+}
+
+.bg_blue {
+  background-color: blue;
+}
+
+.bg_orange {
+  background-color: $pati_orange;
+}
+
+.text-wrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.text-small {
+  font-size: 10px;
+}
+
+.area-container {
+
+  ion-grid {
+    padding: 0;
+    border-bottom: 0.5px solid $pati_red;
+  }
+  border: 1px solid $pati_red;
+
+  .areas-header {
+    background-color: $pati_red;
+    font-weight: 600;
+    color: white;
+  }
+
+  .area {
+    ion-col:nth-child(1),
+    ion-col:nth-child(2) {
+      display: flex;
+      align-items: center;
+      border-right: 1px solid $pati_red;
+    }
+
+    ion-col:nth-child(odd) {
+      background-color: #e4dac5;
+    }
+
+    ion-col:nth-child(even) {
+      background-color: #E4CD9C;
+    }
+
+    [col-7] .title {
+      border: 0;
+    }
+
+    [col-4] {
+      ion-row:nth-child(1) {
+        font-size: 10px;
+      }
+      ion-row:nth-child(2) {
+        font-size: 11px;
+      }
+    }
+
+  }
+}
+
+.topic-container {
+
+  ion-grid {
+    padding: 0;
+    border-bottom: 0.5px solid $pati_red;
+  }
+  border: 1px solid $pati_red;
+
+  .topics-header {
+    background-color: $pati_red;
+    font-weight: 600;
+    color: white;
+  }
+
+  .topic {
+
+    [col-1] {
+      border-right: 1px solid $pati_red;
+    }
+
+    [col-1], [col-3] {
+      background-color: #e4dac5;
+    }
+
+    [col-8] {
+      background-color: #E4CD9C;
+      border-right: 1px solid $pati_red;
+      padding-bottom: 2px;
+
+      .title {
+        border: 0;
+        height: 100%;
+        justify-content: space-between;
+
+        .topic-info {
+          margin-top: 5px;
+          font-size: 11px;
+
+          [col-7],
+          [col-5] .icon {
+            color: $pati_red;
+          }
+        }
+      }
+
+    }
+
+    [col-3] {
+      ion-row {
+        height: 100%;
+        text-align: center;
+        font-size: 10px;
+      }
+    }
+
+  }
+}
+
+.flex-vertical-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// remove refresher border
+.scroll-content {
+  border: 0 !important;
+}
