@@ -33,7 +33,7 @@ export class PatiService {
                 reject(res.msg);
               }
             },
-            err => console.log(err)
+            err => reject(err)
           );
 
       });
@@ -59,7 +59,7 @@ export class PatiService {
                 reject(res.msg);
               }
             },
-            err => console.log(err)
+            err => reject(err)
           );
       });
     });
@@ -84,7 +84,7 @@ export class PatiService {
                 reject(res.msg);
               }
             },
-            err => console.log(err)
+            err => reject(err)
           );
       });
     });

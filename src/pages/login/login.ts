@@ -22,8 +22,8 @@ export class LoginPage {
   doLogin() {
     if (this.username === '' || this.password === '') {
       let alert = this.alertCtrl.create({
-        title: 'Register Error',
-        subTitle: 'All fields are required',
+        title: 'Hata!',
+        subTitle: 'Formu doldurmadiniz!',
         buttons: ['OK']
       });
       alert.present();

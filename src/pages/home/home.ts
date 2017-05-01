@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController, } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 import { PatiService } from '../../providers/pati.service';
 
 @Component({
@@ -24,10 +24,10 @@ export class HomePage {
   moderasyon: any;
 
   constructor(public service: PatiService,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              private alertCtrl: AlertController) {
 
     this.getMainPage();
-
   }
 
   private getMainPage(refresher = null) {
@@ -50,6 +50,12 @@ export class HomePage {
       (err) => {
         console.log(err);
         loader.dismissAll();
+        let alert = this.alertCtrl.create({
+          title: 'Hata!',
+          subTitle: 'Sunucuya baglanirken bi hata olustu! <br><br> Hata: ' + err,
+          buttons: ['OK']
+        });
+        alert.present();
       });
   }
 

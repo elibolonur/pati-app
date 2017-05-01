@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { PatiService } from '../../providers/pati.service';
 import cheerio from 'cheerio';
 
@@ -15,6 +15,7 @@ export class TopicPage {
 
   constructor(public navCtrl: NavController,
               private navParams: NavParams,
+              private alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
               public service: PatiService) {
 
@@ -47,6 +48,12 @@ export class TopicPage {
       (err) => {
         console.log(err);
         loader.dismissAll();
+        let alert = this.alertCtrl.create({
+          title: 'Hata!',
+          subTitle: 'Sunucuya baglanirken bi hata olustu! <br><br> Hata: ' + err,
+          buttons: ['OK']
+        });
+        alert.present();
       });
   }
 

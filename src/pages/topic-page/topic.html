@@ -8,6 +8,13 @@
 
 <ion-content>
 
+  <ion-refresher (ionRefresh)="getTopic($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Yenile?">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-card no-padding class="topic-messages-container" *ngIf="messages">
     <ion-card-content no-padding>
       <ion-grid topic-message-row [message]="message" *ngFor="let message of messages"></ion-grid>
