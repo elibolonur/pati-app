@@ -295,6 +295,10 @@
           }
         }
 
+        .smiley {
+          width: auto !important;
+          height: auto !important;
+        }
 
         object {
           width: 100% !important;
@@ -318,6 +322,7 @@
           height: 1px;
           margin-top: 10px;
           margin-bottom: 0;
+          width: 100% !important;
         }
 
         small {
