@@ -1,7 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { UserInfoPage } from "../../pages/userinfo-page/userinfo";
+import { TopicPage } from "../../pages/topic-page/topic";
 
+
+// TO DO
+// Go to lastpage
+// Pagination
+// Topic options
 
 @Component({
   selector: '[area-topic-row]',
@@ -12,7 +17,7 @@ import { UserInfoPage } from "../../pages/userinfo-page/userinfo";
       <ion-col col-1 class="flex-vertical-center">
         <img *ngIf="topic.topicType" class="flex-vertical-center" src="../../assets/img/{{topic.topicType}}.gif"/></ion-col>
       
-      <ion-col col-8 class="title">
+      <ion-col col-8 class="title" (click)="goToTopic()">
         <ion-grid class="title">
           <ion-row>{{topic.title}}</ion-row>
           <ion-row class="topic-info">
@@ -20,7 +25,7 @@ import { UserInfoPage } from "../../pages/userinfo-page/userinfo";
               {{topic.createdBy.name}}
             </ion-col>
             <ion-col col-5 text-right no-padding>
-              <span style="color: black">{{topic.msgCount}}</span>
+              <span>{{topic.msgCount}}</span>
               <ion-icon name="chatboxes" align-self-end></ion-icon>
             </ion-col>
           </ion-row>
@@ -51,14 +56,16 @@ export class TopicTemplate {
   }
 
   goToTopic() {
-    this.navCtrl.push(UserInfoPage, {
-      topic: this.topic
+    this.navCtrl.push(TopicPage, {
+      topic: this.topic,
+      toLastPage: false
     });
   }
 
-  goToUser() {
-    this.navCtrl.push(UserInfoPage, {
-      user: this.topic.lastMsg.user
+  goToLastPage() {
+    this.navCtrl.push(TopicPage, {
+      user: this.topic.lastMsg.user,
+      toLastPage: true
     });
   }
 }

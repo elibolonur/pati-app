@@ -150,9 +150,12 @@
           [col-5] .icon {
             color: $pati_red;
           }
+
+          [col-5] {
+            color: black;
+          }
         }
       }
-
     }
 
     [col-3] {
@@ -166,10 +169,188 @@
   }
 }
 
+.topic-messages-container {
+
+  border: 1px solid $pati_red;
+
+  ion-grid {
+    padding: 0;
+  }
+
+  .topic-message {
+
+    &:nth-child(odd) {
+      background-color: #e4dac5;
+    }
+
+    &:nth-child(even) {
+      background-color: #E4CD9C;
+    }
+
+    // Slide msg layout fix
+    .list {
+      background-color: inherit;
+
+      .item-wrapper {
+        background-color: inherit;
+
+        .item.item-block {
+          padding: 0;
+          background-color: inherit;
+          .item-inner {
+            padding: 0;
+
+            .label.label {
+              margin: 0;
+              white-space: normal;
+            }
+          }
+        }
+      }
+      ion-item-options .button {
+        height: 100%;
+      }
+    }
+
+    // Message header
+    .row:nth-child(1) {
+      border-top: 1px solid $pati_red;
+      border-bottom: 1px solid $pati_red;
+
+      .col:nth-child(1) {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .col:nth-child(2) {
+        text-align: right;
+        padding-top: 6px;
+        font-size: 13px;
+      }
+    }
+
+    .row:nth-child(2) {
+
+      // Title / Medal container
+      [col-3] {
+
+        border-right: 1px solid $pati_red;
+
+        .row:nth-child(1) {
+          border: 0;
+          font-size: 14px;
+          margin-bottom: 7px;
+        }
+
+        .row:nth-child(2) {
+          margin-bottom: 7px;
+          border: 0;
+
+          img {
+            width: 15px;
+            height: 15px;
+          }
+        }
+
+        .row:nth-child(3) {
+          position: absolute;
+          bottom: 3px;
+          right: 5px;
+          color: $pati_red;
+          font-size: 12px;
+        }
+      }
+
+      // Message container
+      [col-9] {
+
+        .spoiler {
+          border: 1px solid #999;
+          background-color: #f5f5f5;
+          color: black;
+          padding: 5px;
+          margin: 5px 0;
+
+          .spoiler-link {
+            font-size: 15px;
+            color: #488aff;
+            cursor: pointer;
+          }
+
+          .spoiler-inner {
+            margin-top: 5px;
+            display: none;
+          }
+
+          .spoiler-link + input{
+            display: none;
+          }
+
+          .spoiler-link + input + div {
+            display:none;
+          }
+
+          .spoiler-link + input:checked + div {
+            display:block;
+          }
+        }
+
+
+        object {
+          width: 100% !important;
+          height: 200px !important;
+        }
+
+        blockquote.bbcode {
+          font-size: 12px;
+          margin: 10px 0 10px;
+          padding: 5px;
+          border: 1px solid #a0a0a0;
+          background-color: #E4DAC5;
+
+          div {
+            padding: 5px;
+            background-color: #F4EAE5;
+          }
+        }
+
+        hr {
+          height: 1px;
+          margin-top: 10px;
+          margin-bottom: 0;
+        }
+
+        small {
+          font-size: 11px;
+        }
+
+      }
+    }
+
+  }
+}
+
+.special-user-title {
+  color: $pati_red;
+  font-weight: 600;
+}
+
 .flex-vertical-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.flex-vertical-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.flex-vertical-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 // remove refresher border

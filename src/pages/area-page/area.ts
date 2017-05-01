@@ -38,7 +38,6 @@ export class AreaPage {
         if (this.topics) {
           this.filterTopics();
         }
-        console.log(this.topics);
         loader.dismissAll();
       },
       (err) => {

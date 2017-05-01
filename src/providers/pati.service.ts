@@ -64,4 +64,29 @@ export class PatiService {
       });
     });
   }
+
+  public getTopicContent(topicID) {
+    return new Promise((resolve, reject) => {
+      this.storage.get('authCookie').then((cookie) => {
+        this.http.post('http://localhost:3000/getTopic', {
+          apiKey: this.apiKey,
+          authCookie: cookie,
+          topicID: topicID
+        }).map(res => res.json())
+          .subscribe(
+            res => {
+              if (res.success) {
+                // if not logged in send to login
+                resolve(res.data);
+              }
+              else {
+                console.log(res);
+                reject(res.msg);
+              }
+            },
+            err => console.log(err)
+          );
+      });
+    });
+  }
 }

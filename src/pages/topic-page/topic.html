@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{topic.title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card no-padding class="topic-messages-container" *ngIf="messages">
+    <ion-card-content no-padding>
+      <ion-grid topic-message-row [message]="message" *ngFor="let message of messages"></ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
