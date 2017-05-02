@@ -30,7 +30,7 @@ export class TopicPage {
   private getTopicContent(refresher = null) {
     if (refresher) {
       refresher.complete();
-      this.messages = null;
+      this.messages = [];
       this.currentPage = 1;
     }
 

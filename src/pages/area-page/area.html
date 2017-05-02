@@ -40,6 +40,9 @@
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 
-  <div class="page-end-text" *ngIf="infiniteHasEnded">[sayfa sonu]</div>
+  <div class="page-end-text" *ngIf="infiniteHasEnded">
+    <div>[sayfa sonu]</div>
+    <small>{{maxPages}} sayfa yuklendi</small>
+  </div>
 
 </ion-content>

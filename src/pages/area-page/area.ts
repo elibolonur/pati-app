@@ -29,7 +29,7 @@ export class AreaPage {
   private getArea(refresher = null) {
     if (refresher) {
       refresher.complete();
-      this.topics = null;
+      this.topics = [];
       this.currentPage = 1;
     }
 
