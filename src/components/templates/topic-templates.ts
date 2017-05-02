@@ -5,7 +5,6 @@ import { TopicPage } from "../../pages/topic-page/topic";
 
 // TO DO
 // Go to lastpage
-// Pagination
 // Topic options
 
 @Component({
@@ -13,11 +12,17 @@ import { TopicPage } from "../../pages/topic-page/topic";
   host: {'class': 'topic'},
   template: `
     <ion-row align-items-stretch>
+      <ion-grid class="topics-page-header" *ngIf="topic.pageHeader">
+        <ion-row align-items-stretch>
+          <ion-col col-12 text-center>Sayfa: [{{topic.pageHeader}}]</ion-col>
+        </ion-row>
+      </ion-grid>
 
-      <ion-col col-1 class="flex-vertical-center">
-        <img *ngIf="topic.topicType" class="flex-vertical-center" src="../../assets/img/{{topic.topicType}}.gif"/></ion-col>
-      
-      <ion-col col-8 class="title" (click)="goToTopic()">
+      <ion-col col-1 class="flex-vertical-center" *ngIf="!topic.pageHeader">
+        <img *ngIf="topic.topicType" class="flex-vertical-center" src="../../assets/img/{{topic.topicType}}.gif"/>
+      </ion-col>
+
+      <ion-col col-8 class="title" (click)="goToTopic()" *ngIf="!topic.pageHeader">
         <ion-grid class="title">
           <ion-row>{{topic.title}}</ion-row>
           <ion-row class="topic-info">
@@ -32,7 +37,7 @@ import { TopicPage } from "../../pages/topic-page/topic";
         </ion-grid>
       </ion-col>
 
-      <ion-col col-3>
+      <ion-col col-3 *ngIf="!topic.pageHeader">
         <ion-row align-items-center justify-content-center>
           <ion-col col-12 no-padding>
             {{topic.lastMsg.date}}
@@ -45,7 +50,7 @@ import { TopicPage } from "../../pages/topic-page/topic";
           </ion-col>
         </ion-row>
       </ion-col>
-      
+
     </ion-row>`
 })
 export class TopicTemplate {
@@ -78,16 +83,16 @@ export class TopicTemplate {
       <ion-col col-12>Stickies</ion-col>
     </ion-row>`
 })
-export class StickyHeader {}
+export class StickyHeader {
+}
 
 @Component({
-  selector: '[topics-header]',
-  host: {'class': 'topics-header'},
+  selector: '[topics-page-header]',
+  host: {'class': 'topics-page-header'},
   template: `
     <ion-row align-items-stretch>
-      <ion-col col-1></ion-col>
-      <ion-col col-8>Konular</ion-col>
-      <ion-col col-3 text-center>Son Mesaj</ion-col>
+      <ion-col col-12 text-center>Sayfa: [1]</ion-col>
     </ion-row>`
 })
-export class TopicsHeader {}
+export class TopicsPageHeader {
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { PatiService } from '../../providers/pati.service';
 
 
@@ -10,14 +10,13 @@ import { PatiService } from '../../providers/pati.service';
 export class AreaPage {
 
   area: any;
-  topics: any;
+  topics: any = [];
   stickies: any;
-  lastPageLoaded: number = 1;
-  infiniteHasEnded: boolean = true;
+  currentPage: number = 1;
+  infiniteHasEnded: boolean = false;
   maxPages: number;
 
-  constructor(public navCtrl: NavController,
-              private navParams: NavParams,
+  constructor(private navParams: NavParams,
               private alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
               public service: PatiService) {
@@ -31,7 +30,7 @@ export class AreaPage {
     if (refresher) {
       refresher.complete();
       this.topics = null;
-      this.lastPageLoaded = 1;
+      this.currentPage = 1;
     }
 
     let loader = this.loadingCtrl.create({
@@ -40,12 +39,13 @@ export class AreaPage {
     });
     loader.present();
 
-    this.service.getAreaContent(this.area.areaID).then(
+
+    this.service.getAreaContent(this.area.areaID + ",page=" + this.currentPage).then(
       (data) => {
-        this.topics = data["topics"];
-        if (this.topics) {
-          this.maxPages = data["maxPage"];
-          this.prepareTopics();
+        if (data["topics"]) {
+          this.setMaxPages(data["maxPages"]);
+          this.stickies = this.getStickies(data["topics"]);
+          this.getTopics(data["topics"]);
         }
         loader.dismissAll();
       },
@@ -54,7 +54,7 @@ export class AreaPage {
         loader.dismissAll();
         let alert = this.alertCtrl.create({
           title: 'Hata!',
-          subTitle: 'Sunucuya baglanirken bi hata olustu! <br><br> Hata: ' + err,
+          subTitle: 'Sunucuya baglanirken hata olustu! <br><br> Hata: ' + err,
           buttons: ['OK']
         });
         alert.present();
@@ -63,33 +63,17 @@ export class AreaPage {
 
   // Infinite Scroll
   doInfinite(infiniteScroll) {
+    if (this.maxPages > this.currentPage) {
+      this.currentPage++;
 
-    if (this.maxPages > this.lastPageLoaded) {
-      this.lastPageLoaded++;
+      this.getArea();
 
-      this.service.getAreaContent(this.area.areaID + ",page=" + this.lastPageLoaded).then(
-        (data) => {
-          let newTopics = data["topics"];
-          if (newTopics) {
-            this.addNewTopics(newTopics);
-            setTimeout(() => {
-              infiniteScroll.complete();
-            }, 500);
-          }
-        },
-        (err) => {
-          console.log(err);
-          infiniteScroll.complete();
-          let alert = this.alertCtrl.create({
-            title: 'Hata!',
-            subTitle: 'Sunucuya baglanirken bi hata olustu! <br><br> Hata: ' + err,
-            buttons: ['OK']
-          });
-          alert.present();
-        });
+      setTimeout(() => {
+        infiniteScroll.complete();
+      }, 500);
     }
 
-    if (this.maxPages == this.lastPageLoaded) {
+    if (this.maxPages == this.currentPage) {
       this.infiniteHasEnded = true;
     }
     setTimeout(() => {
@@ -97,20 +81,22 @@ export class AreaPage {
     }, 500);
   }
 
-  private prepareTopics() {
-    this.stickies = this.topics.filter(x => x.topicType && x.topicType.includes("sticky"));
-    this.topics = this.filterTopics(this.topics);
+  private getTopics(topics) {
+    let newTopics = this.filterTopics(topics);
 
-    if (this.maxPages !== 1) {
-      this.infiniteHasEnded = false;
-    }
+    this.topics.push({pageHeader: this.currentPage});
+    newTopics.forEach((topic) => {
+      this.topics.push(topic);
+    });
   }
 
-  private addNewTopics(topics) {
-    let newTopics = this.filterTopics(topics);
-    newTopics.forEach((item) => {
-      this.topics.push(item);
-    });
+  private getStickies(topics) {
+    return topics.filter(x => x.topicType && x.topicType.includes("sticky"));
+  }
+
+  private setMaxPages(maxPages) {
+    this.maxPages = maxPages;
+    this.maxPages === 1 ? this.infiniteHasEnded = true : this.infiniteHasEnded = false;
   }
 
   private filterTopics(topics) {

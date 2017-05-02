@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { PatiService } from '../../providers/pati.service';
 import cheerio from 'cheerio';
 
@@ -10,25 +10,29 @@ import cheerio from 'cheerio';
 export class TopicPage {
 
   topic: any;
-  messages: any;
+  messages: any = [];
   toLastPage: boolean = false;
+  currentPage: number = 1;
+  infiniteHasEnded: boolean = false;
+  maxPages: number;
 
-  constructor(public navCtrl: NavController,
-              private navParams: NavParams,
+  constructor(private navParams: NavParams,
               private alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
               public service: PatiService) {
 
     this.topic = navParams.get("topic");
-    this.toLastPage = navParams.get("toLasPage");
+    this.toLastPage = navParams.get("toLastPage");
 
-
-    this.getTopic();
+    this.getTopicContent();
   }
 
-  private getTopic(refresher = null) {
-    if (refresher)
+  private getTopicContent(refresher = null) {
+    if (refresher) {
       refresher.complete();
+      this.messages = null;
+      this.currentPage = 1;
+    }
 
     let loader = this.loadingCtrl.create({
       spinner: "dots",
@@ -36,13 +40,12 @@ export class TopicPage {
     });
     loader.present();
 
-    this.service.getTopicContent(this.topic.topicID).then(
+    this.service.getTopicContent(this.topic.topicID + ",page=" + this.currentPage).then(
       (data) => {
-        this.messages = data;
-        if (this.messages) {
-          this.filterMessages();
+        if (data["messages"]) {
+          this.setMaxPages(data["maxPages"]);
+          this.getMessages(data["messages"]);
         }
-        console.log(this.messages);
         loader.dismissAll();
       },
       (err) => {
@@ -50,17 +53,47 @@ export class TopicPage {
         loader.dismissAll();
         let alert = this.alertCtrl.create({
           title: 'Hata!',
-          subTitle: 'Sunucuya baglanirken bi hata olustu! <br><br> Hata: ' + err,
+          subTitle: 'Sunucuya baglanirken hata olustu! <br><br> Hata: ' + err,
           buttons: ['OK']
         });
         alert.present();
       });
   }
 
-  private filterMessages() {
-    this.messages = this.messages.filter(x => x.date && x.time);
+  // Infinite Scroll
+  doInfinite(infiniteScroll) {
+    if (this.maxPages > this.currentPage) {
+      this.currentPage++;
 
-    this.messages.filter(msg => {
+      this.getTopicContent();
+
+      setTimeout(() => {
+        infiniteScroll.complete();
+      }, 500);
+    }
+
+    if (this.maxPages == this.currentPage) {
+      this.infiniteHasEnded = true;
+    }
+    setTimeout(() => {
+      infiniteScroll.complete();
+    }, 500);
+  }
+
+
+  private getMessages(messages) {
+    let newMessages = this.filterMessages(messages);
+
+    this.messages.push({pageHeader: this.currentPage});
+    newMessages.forEach((topic) => {
+      this.messages.push(topic);
+    });
+  }
+
+  private filterMessages(messages) {
+    const filteredMessages = messages.filter(x => x.date && x.time);
+
+    filteredMessages.filter(msg => {
       let ch = cheerio.load(msg.content);
       ch('script').remove();
       ch('.bbcode_spoiler_close').remove();
@@ -98,6 +131,21 @@ export class TopicPage {
         }
         msg.content = ch.html();
       });
+      return msg;
     });
+
+    return filteredMessages;
+  }
+
+  private setMaxPages(maxPages) {
+    this.maxPages = maxPages;
+
+    if (this.maxPages === undefined) {
+      this.infiniteHasEnded = true;
+      this.maxPages = 1;
+    }
+    else {
+      this.infiniteHasEnded = false;
+    }
   }
 }

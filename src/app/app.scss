@@ -105,14 +105,10 @@
     border-bottom: 0.5px solid $pati_red;
   }
 
-  .topics-header {
+  .topics-page-header {
     background-color: $pati_red;
     font-weight: 600;
     color: white;
-
-    [col-3] {
-      font-size: 12px;
-    }
   }
 
   .sticky-header {
@@ -175,6 +171,12 @@
 
   ion-grid {
     padding: 0;
+  }
+
+  .message-page-header {
+    background-color: $pati_red;
+    font-weight: 600;
+    color: white;
   }
 
   .topic-message {
@@ -333,6 +335,14 @@
     }
 
   }
+}
+
+.page-end-text {
+  color: $pati_red;
+  font-weight: 600;
+  margin-bottom: 2em;
+  margin-top: 2em;
+  text-align: center;
 }
 
 .special-user-title {

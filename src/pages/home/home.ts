@@ -52,7 +52,7 @@ export class HomePage {
         loader.dismissAll();
         let alert = this.alertCtrl.create({
           title: 'Hata!',
-          subTitle: 'Sunucuya baglanirken bi hata olustu! <br><br> Hata: ' + err,
+          subTitle: 'Sunucuya baglanirken hata olustu! <br><br> Hata: ' + err,
           buttons: ['OK']
         });
         alert.present();

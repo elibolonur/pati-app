@@ -7,7 +7,11 @@ import { DomSanitizer } from '@angular/platform-browser';
   selector: '[topic-message-row]',
   host: {'class': 'topic-message'},
   template: `
-    <ion-list>
+    <ion-row align-items-stretch class="message-page-header" *ngIf="message.pageHeader">
+      <ion-col col-12 text-center>Sayfa: [{{message.pageHeader}}]</ion-col>
+    </ion-row>
+    
+    <ion-list *ngIf="!message.pageHeader">
       <ion-item-sliding #item>
         <ion-item>
 
@@ -16,7 +20,7 @@ import { DomSanitizer } from '@angular/platform-browser';
             <ion-col col-6>{{message.postedBy.name}}</ion-col>
             <ion-col col-6>§ {{message.date}}, {{message.time}}</ion-col>
           </ion-row>
-          
+
           <!--Member info-->
           <ion-row align-items-stretch>
             <ion-col col-3>
@@ -63,7 +67,8 @@ export class TopicMessage {
 
 @Pipe({name: 'safeHtml'})
 export class SafeHtml {
-  constructor(private sanitizer:DomSanitizer){}
+  constructor(private sanitizer: DomSanitizer) {
+  }
 
   transform(html) {
     return this.sanitizer.bypassSecurityTrustHtml(html);
