@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <!--{{pm.title}}-->
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card no-padding *ngIf="pm">
+    <ion-card-content no-padding>
+      <ion-grid class="pm-container">
+        <ion-row align-items-stretch>
+          {{pm.title}}
+        </ion-row>
+        <ion-row align-items-stretch>
+          Gönderen: {{pm.sentBy.name}}
+        </ion-row>
+        <ion-row align-items-stretch>
+          Tarih: {{pm.date}}, {{pm.time}}
+        </ion-row>
+        <ion-row align-items-stretch class="pm-body">
+          <ion-col col-12 [innerHTML]="pm.content | safeHtml"> </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

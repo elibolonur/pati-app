@@ -16,7 +16,7 @@
     <ion-card-content no-padding>
 
       <ion-grid pm-page-header [staticFirst]="'Baslik'" [staticSecond]="'Gönderen'"></ion-grid>
-      <ion-grid pm-row [message]="message" *ngFor="let message of privateMessages"></ion-grid>
+      <ion-grid pm-row [pm]="pm" *ngFor="let pm of privateMessages"></ion-grid>
 
     </ion-card-content>
   </ion-card>

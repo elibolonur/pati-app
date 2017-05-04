@@ -17,10 +17,12 @@ import { ActiveTopicsPage } from '../pages/active-topics/active-topics';
 import { FavoriteTopicsPage } from '../pages/favorite-topics/favorite-topics';
 import { PmPage } from '../pages/pm/pm';
 
+
 // Sub pages
 import { AreaPage } from '../pages/area-page/area';
 import { TopicPage } from '../pages/topic-page/topic';
 import { UserInfoPage } from '../pages/userinfo-page/userinfo';
+import { PmReadPage } from "../pages/pm-read/pmread";
 
 // Templates
 import { AreaTemplate, AreasHeader, AreaSeparator } from '../components/templates/area-templates';
@@ -54,6 +56,7 @@ import { Authentication } from '../providers/auth.service';
     ActiveTopicsTemplate,
     PmRowTemplate,
     PmPageHeader,
+    PmReadPage,
     SafeHtml
   ],
   imports: [
@@ -89,7 +92,8 @@ import { Authentication } from '../providers/auth.service';
     AreaPage,
     TopicPage,
     UserInfoPage,
-    PmPage
+    PmPage,
+    PmReadPage
   ],
   providers: [
     StatusBar,

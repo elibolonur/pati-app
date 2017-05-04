@@ -32,7 +32,6 @@ export class PmPage {
         if (this.privateMessages)
           this.filterPms();
         loader.dismissAll();
-        console.log(this.privateMessages)
       },
       (err) => {
         console.log(err);

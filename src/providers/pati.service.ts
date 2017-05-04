@@ -93,13 +93,40 @@ export class PatiService {
     });
   }
 
-  // Request to get Followed topics content (topics)
+  // Request to get PM page (Private messages)
   public getPrivateMessages() {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
         this.http.post('http://localhost:3000/getMsgPage', {
           apiKey: this.apiKey,
           authCookie: cookie
+        }).map(res => res.json())
+          .subscribe(
+            res => {
+              if (res.success) {
+                // if not logged in send to login
+                resolve(res.data);
+              }
+              else {
+                console.log(res)
+                reject(res.msg);
+              }
+            },
+            err => reject(err)
+          );
+
+      });
+    });
+  }
+
+  // Request to get Private Message content (PM Body)
+  public getPmContent(pmID) {
+    return new Promise((resolve, reject) => {
+      this.storage.get('authCookie').then((cookie) => {
+        this.http.post('http://localhost:3000/getMessage', {
+          apiKey: this.apiKey,
+          authCookie: cookie,
+          pmID: pmID
         }).map(res => res.json())
           .subscribe(
             res => {

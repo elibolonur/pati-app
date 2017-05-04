@@ -37,7 +37,7 @@ import { DomSanitizer } from '@angular/platform-browser';
             </ion-col>
 
             <!--Message content-->
-            <ion-col col-9 [innerHTML]="message.content | safeHtml" #msg>
+            <ion-col col-9 [innerHTML]="message.content | safeHtml">
             </ion-col>
           </ion-row>
 

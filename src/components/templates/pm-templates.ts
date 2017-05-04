@@ -1,25 +1,25 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { TopicPage } from "../../pages/topic-page/topic";
-
+import { PmReadPage } from "../../pages/pm-read/pmread";
 
 @Component({
   selector: '[pm-row]',
   host: {'class': 'pm-row'},
   template: `
     <ion-row align-items-stretch>
-      <ion-col col-9 (click)="goToPm()" class="flex-vertical-center" [ngClass]="{'new-pm': message.isNew}">{{message.title}}</ion-col>
+      <ion-col col-9 (click)="goToPm()" class="flex-vertical-center" [ngClass]="{'new-pm': pm.isNew}">{{pm.title}}
+      </ion-col>
 
       <ion-col col-3>
         <ion-row align-items-center justify-content-center>
           <ion-col col-12 no-padding>
-            {{message.info.date}}
+            {{pm.info.date}}
           </ion-col>
           <ion-col col-12 no-padding>
-            {{message.info.time}}
+            {{pm.info.time}}
           </ion-col>
           <ion-col col-12 no-padding align-self-end>
-            {{message.info.sender.name}}
+            {{pm.info.sender.name}}
           </ion-col>
         </ion-row>
       </ion-col>
@@ -28,14 +28,14 @@ import { TopicPage } from "../../pages/topic-page/topic";
 })
 export class PmRowTemplate {
 
-  @Input() message: any;
+  @Input() pm: any;
 
   constructor(public navCtrl: NavController) {
   }
 
   goToPm() {
-    this.navCtrl.push(TopicPage, {
-      message: this.message,
+    this.navCtrl.push(PmReadPage, {
+      pm: this.pm,
     });
   }
 }
@@ -52,4 +52,21 @@ export class PmRowTemplate {
 export class PmPageHeader {
   @Input() staticFirst: string;
   @Input() staticSecond: string;
+}
+
+
+@Component({
+  selector: '[pm-body]',
+  host: {'class': 'pm-container'},
+  template: `
+    <!--Message header-->
+    <ion-row align-items-stretch>
+    </ion-row>`
+})
+export class PmBodyTemplate {
+
+  @Input() message: any;
+
+  constructor(public navCtrl: NavController) {
+  }
 }
