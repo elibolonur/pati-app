@@ -26,6 +26,7 @@ import { UserInfoPage } from '../pages/userinfo-page/userinfo';
 import { AreaTemplate, AreasHeader, AreaSeparator } from '../components/templates/area-templates';
 import { TopicTemplate, TopicsPageHeader, StickyHeader, ActiveTopicsTemplate } from '../components/templates/topic-templates';
 import { TopicMessage, SafeHtml } from '../components/templates/topicmessage-templates';
+import { PmRowTemplate, PmPageHeader } from '../components/templates/pm-templates';
 
 // Providers
 import { PatiService } from '../providers/pati.service';
@@ -51,6 +52,8 @@ import { Authentication } from '../providers/auth.service';
     TopicMessage,
     StickyHeader,
     ActiveTopicsTemplate,
+    PmRowTemplate,
+    PmPageHeader,
     SafeHtml
   ],
   imports: [

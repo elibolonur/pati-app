@@ -355,6 +355,52 @@
   }
 }
 
+.pm-row-container {
+
+  border: 1px solid $pati_red;
+
+  ion-grid {
+    padding: 0;
+    border-bottom: 0.5px solid $pati_red;
+  }
+
+  .pm-page-header {
+    background-color: $pati_red;
+    font-weight: 600;
+    color: white;
+
+    [col-9] {
+      font-size: 14px;
+    }
+    [col-3] {
+      padding-top: 6px;
+      font-size: 13px;
+    }
+  }
+
+  .pm-row {
+    background-color: #E4CD9C;
+
+    [col-9] {
+      background-color: #E4CD9C;
+      border-right: 1px solid $pati_red;
+
+      &.new-pm {
+        font-weight: 600;
+      }
+    }
+
+    [col-3] {
+      ion-row {
+        height: 100%;
+        text-align: center;
+        font-size: 12px;
+      }
+    }
+
+  }
+}
+
 .page-end-text {
   color: $pati_red;
   font-weight: 600;

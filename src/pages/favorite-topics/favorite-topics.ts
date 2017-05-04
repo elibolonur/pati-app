@@ -38,7 +38,6 @@ export class FavoriteTopicsPage {
           if (this.followedTopics) {
             this.filterTopics();
           }
-          console.log(this.followedTopics)
         }
         loader.dismissAll();
       },

@@ -5,5 +5,19 @@
 </ion-header>
 
 <ion-content>
-  <h2 text-center style="color: white;">< Under construction ></h2>
+  <ion-refresher (ionRefresh)="getPM($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Yenile?">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card no-padding class="pm-row-container" *ngIf="privateMessages">
+    <ion-card-content no-padding>
+
+      <ion-grid pm-page-header [staticFirst]="'Baslik'" [staticSecond]="'Gönderen'"></ion-grid>
+      <ion-grid pm-row [message]="message" *ngFor="let message of privateMessages"></ion-grid>
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>

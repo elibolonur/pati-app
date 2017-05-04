@@ -26,12 +26,13 @@ export class PmPage {
       content: "Yükleniyor..."
     });
     loader.present();
-    this.service.getMainPage().then(
+    this.service.getPrivateMessages().then(
       (data) => {
         this.privateMessages = data;
         if (this.privateMessages)
           this.filterPms();
         loader.dismissAll();
+        console.log(this.privateMessages)
       },
       (err) => {
         console.log(err);
@@ -46,6 +47,6 @@ export class PmPage {
   }
 
   private filterPms() {
-
+    this.privateMessages = this.privateMessages.filter(x => x.title !== "")
   }
 }
