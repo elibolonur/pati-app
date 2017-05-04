@@ -9,6 +9,9 @@ export class PatiService {
 
   storage: any;
   apiKey: string;
+  // url: string = "http://localhost:3000";
+  url: string = "https://pati-scraper.herokuapp.com/";
+
 
   constructor(public http: Http, auth: Authentication, storage: Storage) {
     this.storage = storage;
@@ -19,7 +22,7 @@ export class PatiService {
   public getMainPage() {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
-        this.http.post('http://localhost:3000/getMainPage', {
+        this.http.post(this.url + 'getMainPage', {
           apiKey: this.apiKey,
           authCookie: cookie
         }).map(res => res.json())
@@ -45,7 +48,7 @@ export class PatiService {
   public getActiveTopicsPage() {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
-        this.http.post('http://localhost:3000/getActiveTopics', {
+        this.http.post(this.url + 'getActiveTopics', {
           apiKey: this.apiKey,
           authCookie: cookie
         }).map(res => res.json())
@@ -71,7 +74,7 @@ export class PatiService {
   public getFollowedTopicsPage() {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
-        this.http.post('http://localhost:3000/getFollowedTopics', {
+        this.http.post(this.url + 'getFollowedTopics', {
           apiKey: this.apiKey,
           authCookie: cookie
         }).map(res => res.json())
@@ -97,7 +100,7 @@ export class PatiService {
   public getPrivateMessages() {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
-        this.http.post('http://localhost:3000/getMsgPage', {
+        this.http.post(this.url + 'getMsgPage', {
           apiKey: this.apiKey,
           authCookie: cookie
         }).map(res => res.json())
@@ -123,7 +126,7 @@ export class PatiService {
   public getPmContent(pmID) {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
-        this.http.post('http://localhost:3000/getMessage', {
+        this.http.post(this.url + 'getMessage', {
           apiKey: this.apiKey,
           authCookie: cookie,
           pmID: pmID
@@ -150,7 +153,7 @@ export class PatiService {
   public getAreaContent(areaID) {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
-        this.http.post('http://localhost:3000/getArea', {
+        this.http.post(this.url + 'getArea', {
           apiKey: this.apiKey,
           authCookie: cookie,
           areaID: areaID
@@ -176,7 +179,7 @@ export class PatiService {
   public getTopicContent(topicID) {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
-        this.http.post('http://localhost:3000/getTopic', {
+        this.http.post(this.url + 'getTopic', {
           apiKey: this.apiKey,
           authCookie: cookie,
           topicID: topicID
