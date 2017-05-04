@@ -15,7 +15,6 @@ export class ActiveTopicsPage {
               public service: PatiService) {
 
     this.getActiveTopics();
-
   }
 
   // Get areas
@@ -39,7 +38,6 @@ export class ActiveTopicsPage {
           if (this.activeTopics) {
             this.filterTopics();
           }
-          console.log(this.activeTopics)
         }
         loader.dismissAll();
       },
@@ -58,6 +56,5 @@ export class ActiveTopicsPage {
   private filterTopics() {
     this.activeTopics = this.activeTopics.filter(x => x.title !== "")
   }
-
 
 }

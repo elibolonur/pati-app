@@ -104,6 +104,13 @@
     background-color: $pati_red;
     font-weight: 600;
     color: white;
+
+    [col-8] {
+      font-size: 14px;
+    }
+    [col-3] {
+      font-size: 13px;
+    }
   }
 
   .sticky-header {

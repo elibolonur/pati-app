@@ -12,11 +12,7 @@ import { TopicPage } from "../../pages/topic-page/topic";
   host: {'class': 'topic'},
   template: `
     <ion-row align-items-stretch>
-      <ion-grid class="topics-page-header" *ngIf="topic.pageHeader">
-        <ion-row align-items-stretch>
-          <ion-col col-12 text-center>Sayfa: [{{topic.pageHeader}}]</ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-grid topics-page-header *ngIf="topic.pageHeader" [pageNumber]="topic.pageHeader"></ion-grid>
 
       <ion-col col-1 class="flex-vertical-center" *ngIf="!topic.pageHeader">
         <img *ngIf="topic.topicType" class="flex-vertical-center" src="../../assets/img/{{topic.topicType}}.gif"/>
@@ -91,10 +87,17 @@ export class StickyHeader {
   host: {'class': 'topics-page-header'},
   template: `
     <ion-row align-items-stretch>
-      <ion-col col-12 text-center>Sayfa: [1]</ion-col>
+      <ion-col col-12 text-center *ngIf="pageNumber">Sayfa: [{{pageNumber}}]</ion-col>
+      
+      <ion-col col-1 *ngIf="!pageNumber"></ion-col>
+      <ion-col col-8 *ngIf="!pageNumber">{{staticFirst}}</ion-col>
+      <ion-col col-3 *ngIf="!pageNumber">{{staticSecond}}</ion-col>
     </ion-row>`
 })
 export class TopicsPageHeader {
+  @Input() pageNumber: string;
+  @Input() staticFirst: string;
+  @Input() staticSecond: string;
 }
 
 // Topic template for ActiveTopics page
@@ -111,7 +114,10 @@ export class TopicsPageHeader {
       <ion-col col-8 (click)="goToTopic()" class="in-active-topics">
         <ion-grid class="title">
           <ion-row>{{topic.title}}</ion-row>
-          <ion-row><ion-icon name="git-branch" style="margin-right: 3px;"></ion-icon> {{topic.area.name}}</ion-row>
+          <ion-row>
+            <ion-icon name="git-branch" style="margin-right: 3px;"></ion-icon>
+            {{topic.area.name}}
+          </ion-row>
         </ion-grid>
       </ion-col>
 

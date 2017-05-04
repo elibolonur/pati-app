@@ -15,6 +15,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { ActiveTopicsPage } from '../pages/active-topics/active-topics';
 import { FavoriteTopicsPage } from '../pages/favorite-topics/favorite-topics';
+import { PmPage } from '../pages/pm/pm';
 
 // Sub pages
 import { AreaPage } from '../pages/area-page/area';
@@ -40,6 +41,7 @@ import { Authentication } from '../providers/auth.service';
     AreaTemplate,
     AreasHeader,
     AreaSeparator,
+    PmPage,
     LoginPage,
     AreaPage,
     TopicPage,
@@ -83,7 +85,8 @@ import { Authentication } from '../providers/auth.service';
     LoginPage,
     AreaPage,
     TopicPage,
-    UserInfoPage
+    UserInfoPage,
+    PmPage
   ],
   providers: [
     StatusBar,

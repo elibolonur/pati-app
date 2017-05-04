@@ -16,6 +16,7 @@
   <ion-card no-padding class="topic-container" *ngIf="activeTopics">
     <ion-card-content no-padding>
 
+      <ion-grid topics-page-header [staticFirst]="'Baslik'" [staticSecond]="'Son Mesaj'"></ion-grid>
       <ion-grid active-topic-row [topic]="topic" *ngFor="let topic of activeTopics"></ion-grid>
 
     </ion-card-content>
