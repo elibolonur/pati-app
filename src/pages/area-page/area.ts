@@ -11,7 +11,7 @@ export class AreaPage {
 
   area: any;
   topics: any = [];
-  stickies: any;
+  stickies: any = [];
   currentPage: number = 1;
   infiniteHasEnded: boolean = false;
   maxPages: number;

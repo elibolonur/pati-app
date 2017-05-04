@@ -1,10 +1,26 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      [ Favori Konularım ]
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<!--<ion-header>-->
+<!--<ion-navbar>-->
+<!--<ion-title>-->
+<!--{{area.title}}-->
+<!--</ion-title>-->
+<!--</ion-navbar>-->
+<!--</ion-header>-->
 
 <ion-content>
+
+  <ion-refresher>
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Yenile?">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card no-padding class="topic-container">
+    <ion-card-content no-padding>
+
+      <ion-grid></ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

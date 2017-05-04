@@ -16,9 +16,18 @@ import { UserInfoPage } from "../../pages/userinfo-page/userinfo";
           <ion-row class="text-wrapper text-small">{{area.description}}</ion-row>
         </ion-grid>
       </ion-col>
-      <ion-col col-4 class="flex-vertical-center">
-        <ion-row justify-content-center>{{area.lastMsg.date}}, {{area.lastMsg.time}}</ion-row>
-        <ion-row justify-content-center (click)="goToUser()">{{area.lastMsg.user.name}}</ion-row>
+      <ion-col col-4>
+        <ion-row align-items-center justify-content-center>
+          <ion-col col-12 no-padding>
+            {{area.lastMsg.date}}
+          </ion-col>
+          <ion-col col-12 no-padding  text-center>
+            {{area.lastMsg.time}}
+          </ion-col>
+          <ion-col col-12 no-padding align-self-end>
+            {{area.lastMsg.user.name}}
+          </ion-col>
+        </ion-row>
       </ion-col>
     </ion-row>`
 })

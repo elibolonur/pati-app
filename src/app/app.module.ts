@@ -23,7 +23,7 @@ import { UserInfoPage } from '../pages/userinfo-page/userinfo';
 
 // Templates
 import { AreaTemplate, AreasHeader, AreaSeparator } from '../components/templates/area-templates';
-import { TopicTemplate, TopicsPageHeader, StickyHeader } from '../components/templates/topic-templates';
+import { TopicTemplate, TopicsPageHeader, StickyHeader, ActiveTopicsTemplate } from '../components/templates/topic-templates';
 import { TopicMessage, SafeHtml } from '../components/templates/topicmessage-templates';
 
 // Providers
@@ -48,6 +48,7 @@ import { Authentication } from '../providers/auth.service';
     TopicTemplate,
     TopicMessage,
     StickyHeader,
+    ActiveTopicsTemplate,
     SafeHtml
   ],
   imports: [

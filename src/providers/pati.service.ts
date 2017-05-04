@@ -15,6 +15,7 @@ export class PatiService {
     this.apiKey = auth.apiKey;
   }
 
+  // Request to get MainPage content (area categories)
   public getMainPage() {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
@@ -40,6 +41,33 @@ export class PatiService {
     });
   }
 
+  // Request to get MainPage content (area categories)
+  public getActiveTopicsPage() {
+    return new Promise((resolve, reject) => {
+      this.storage.get('authCookie').then((cookie) => {
+        this.http.post('http://localhost:3000/getActiveTopics', {
+          apiKey: this.apiKey,
+          authCookie: cookie
+        }).map(res => res.json())
+          .subscribe(
+            res => {
+              if (res.success) {
+                // if not logged in send to login
+                resolve(res.data);
+              }
+              else {
+                console.log(res)
+                reject(res.msg);
+              }
+            },
+            err => reject(err)
+          );
+
+      });
+    });
+  }
+
+  // Request to get Area content (topics in an area)
   public getAreaContent(areaID) {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
@@ -65,6 +93,7 @@ export class PatiService {
     });
   }
 
+  // Request to get Topic content - (topic messages)
   public getTopicContent(topicID) {
     return new Promise((resolve, reject) => {
       this.storage.get('authCookie').then((cookie) => {
