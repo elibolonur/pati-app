@@ -33,7 +33,7 @@ export class PatiService {
                 resolve(res.data);
               }
               else {
-                console.log(res)
+                console.log(res);
                 reject(res.msg);
               }
             },
@@ -59,7 +59,7 @@ export class PatiService {
                 resolve(res.data);
               }
               else {
-                console.log(res)
+                console.log(res);
                 reject(res.msg);
               }
             },
@@ -85,7 +85,7 @@ export class PatiService {
                 resolve(res.data);
               }
               else {
-                console.log(res)
+                console.log(res);
                 reject(res.msg);
               }
             },
@@ -111,7 +111,7 @@ export class PatiService {
                 resolve(res.data);
               }
               else {
-                console.log(res)
+                console.log(res);
                 reject(res.msg);
               }
             },
@@ -138,7 +138,7 @@ export class PatiService {
                 resolve(res.data);
               }
               else {
-                console.log(res)
+                console.log(res);
                 reject(res.msg);
               }
             },

@@ -10,7 +10,7 @@ import { UserInfoPage } from "../../pages/userinfo-page/userinfo";
   template: `
     <ion-row align-items-stretch>
       <ion-col col-1><img src="../../assets/img/message_new.gif" *ngIf="area.hasNewMsg"/></ion-col>
-      <ion-col col-7 (click)="goToArea()">
+      <ion-col col-7 (click)="goToArea()" tappable>
         <ion-grid class="title">
           <ion-row>{{area.title}}</ion-row>
           <ion-row class="text-wrapper text-small">{{area.description}}</ion-row>

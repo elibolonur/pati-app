@@ -9,6 +9,8 @@ export class Authentication {
   apiKey: string = "16a7cf79db61b9cab7c2563ef949947b818064083ecef72e5899f887814d2bc9";
   storage: any;
   authCookie: any;
+  url: string = 'https://pati-scraper.herokuapp.com/';
+  // url: string = 'http://localhost:3000/';
 
   constructor(public http: Http, storage: Storage) {
     this.storage = storage;
@@ -20,7 +22,7 @@ export class Authentication {
     }
     else {
       return new Promise((resolve, reject) => {
-        this.http.post('http://localhost:3000/login', {
+        this.http.post(this.url + 'login', {
           uname: username,
           pass: password,
           apiKey: this.apiKey

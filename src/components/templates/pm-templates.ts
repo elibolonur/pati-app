@@ -10,7 +10,7 @@ import { PmReadPage } from "../../pages/pm-read/pmread";
       <ion-col col-9 (click)="goToPm()" class="flex-vertical-center" [ngClass]="{'new-pm': pm.isNew}">{{pm.title}}
       </ion-col>
 
-      <ion-col col-3>
+      <ion-col col-3 tappable>
         <ion-row align-items-center justify-content-center>
           <ion-col col-12 no-padding>
             {{pm.info.date}}

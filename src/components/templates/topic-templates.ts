@@ -18,7 +18,7 @@ import { TopicPage } from "../../pages/topic-page/topic";
         <img *ngIf="topic.topicType" class="flex-vertical-center" src="../../assets/img/{{topic.topicType}}.gif"/>
       </ion-col>
 
-      <ion-col col-8 (click)="goToTopic()" *ngIf="!topic.pageHeader">
+      <ion-col col-8 (click)="goToTopic()" *ngIf="!topic.pageHeader" tappable>
         <ion-grid class="title">
           <ion-row>{{topic.title}}</ion-row>
           <ion-row class="topic-info">
@@ -75,7 +75,7 @@ export class TopicTemplate {
   selector: '[sticky-header]',
   host: {'class': 'sticky-header'},
   template: `
-    <ion-row align-items-stretch>
+    <ion-row align-items-stretch tappable>
       <ion-col col-12>Stickies</ion-col>
     </ion-row>`
 })
@@ -111,7 +111,7 @@ export class TopicsPageHeader {
         <img *ngIf="topic.topicType" class="flex-vertical-center" src="../../assets/img/{{topic.topicType}}.gif"/>
       </ion-col>
 
-      <ion-col col-8 (click)="goToTopic()" class="in-active-topics">
+      <ion-col col-8 (click)="goToTopic()" class="in-active-topics" tappable>
         <ion-grid class="title">
           <ion-row>{{topic.title}}</ion-row>
           <ion-row>
