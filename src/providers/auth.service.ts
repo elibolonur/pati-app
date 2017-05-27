@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
+import { App } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
+import { LoginPage } from "../pages/login/login";
 
 @Injectable()
 export class Authentication {
 
+  // API key for API requests
   apiKey: string = "16a7cf79db61b9cab7c2563ef949947b818064083ecef72e5899f887814d2bc9";
+  // storage to save login data
   storage: any;
+  // auth cookie
   authCookie: any;
-  url: string = 'https://pati-scraper.herokuapp.com/';
-  // url: string = 'http://localhost:3000/';
+  // API url
+  url: string = 'http://localhost:3000/';
 
-  constructor(public http: Http, storage: Storage) {
+  constructor(public http: Http, storage: Storage, public app: App) {
     this.storage = storage;
   }
 
@@ -48,7 +53,11 @@ export class Authentication {
   }
 
   public logout() {
-    // delete keypair
+    this.storage.ready().then(() => {
+      this.storage.set('authCookie', null);
+      this.storage.set('username', null);
+      this.app.getRootNav().setRoot(LoginPage);
+    });
   }
 
 }

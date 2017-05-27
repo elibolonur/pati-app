@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoadingController, AlertController } from 'ionic-angular';
 import { PatiService } from '../../providers/pati.service';
+import { Authentication } from '../../providers/auth.service';
 
 @Component({
   selector: 'page-favorite-topics',
@@ -12,6 +13,7 @@ export class FavoriteTopicsPage {
 
   constructor(private alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
+              private auth: Authentication,
               public service: PatiService) {
 
     this.getFollowedTopics();
@@ -55,6 +57,10 @@ export class FavoriteTopicsPage {
 
   private filterTopics() {
     this.followedTopics = this.followedTopics.filter(x => x.title !== "")
+  }
+
+  logout () {
+    this.auth.logout();
   }
 
 }

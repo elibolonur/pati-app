@@ -1,23 +1,70 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Login/Register</ion-title>
+    <ion-title>Login</ion-title>
   </ion-navbar>
-
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="page">
+      <ion-segment-button value="app">
+        App-Login
+      </ion-segment-button>
+      <ion-segment-button value="api">
+        API-connection
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content overflow-scroll="true" padding>
 
-  <div>
-    <ion-item>
-      <ion-input type="text" placeholder="Email" [(ngModel)]="username"></ion-input>
-    </ion-item>
+  <div [ngSwitch]="page">
+    <ion-list *ngSwitchCase="'app'" class="login-form-container">
+        <ion-list>
+          <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" [(ngModel)]="username"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
-    </ion-item>
+          <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="password"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <button ion-button full (click)="doLogin()" class="btn-login">Login</button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'api'" class="api-events-container">
+      <h3>DeCore Integration</h3>
+      <h6>Events</h6>
+      <hr>
+      <ion-card *ngFor="let event of apiEvents">
+        <ion-item>
+          <h2>{{event.Title}}</h2>
+          <p>{{event.StartDate}}</p>
+        </ion-item>
+
+        <img src="{{event.ImageURL}}">
+
+        <ion-card-content>
+          <p><span style="font-weight: 600;">Beskrivning: </span>{{event.Description}}</p>
+          <hr>
+          <p><span style="font-weight: 600;">Studentpris: </span>{{event.BasePrice}}</p>
+          <p><span style="font-weight: 600;">Medlempris: </span>{{event.MemberPrice}}</p>
+          <hr>
+        </ion-card-content>
+
+        <ion-row>
+          <ion-col push-4>
+            <button ion-button icon-left clear small>
+              <ion-icon name="body"></ion-icon>
+              <div>{{event.MaxTickets}} platser</div>
+            </button>
+          </ion-col>
+        </ion-row>
+
+      </ion-card>
+    </ion-list>
   </div>
-
-  <button ion-button color="primary" full (click)="doLogin()">Login</button>
 </ion-content>

@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AreaPage } from '../../pages/area-page/area';
 import { UserInfoPage } from "../../pages/userinfo-page/userinfo";
 
+// Template for to show Areas - list item
 
 @Component({
   selector: '[mainpage-area-row]',

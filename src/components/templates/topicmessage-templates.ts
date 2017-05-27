@@ -2,6 +2,7 @@ import { Component, Input, Pipe } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 
+// Template for to show Topic messages - list item
 
 @Component({
   selector: '[topic-message-row]',
@@ -28,9 +29,9 @@ import { DomSanitizer } from '@angular/platform-browser';
                 {{message.postedBy.title.name}}
               </ion-row>
               <ion-row>
-                <img src="../../assets/img/medal_1k.gif" *ngIf="message.postedBy.medals.length > 0">
-                <img src="../../assets/img/medal_5k.gif" *ngIf="message.postedBy.medals.length > 1">
-                <img src="../../assets/img/medal_10k.gif" *ngIf="message.postedBy.medals.length > 2">
+                <img src="../.../../assets/img/medal_1k.gif" *ngIf="message.postedBy.medals.length > 0">
+                <img src="../.../../assets/img/medal_5k.gif" *ngIf="message.postedBy.medals.length > 1">
+                <img src="../.../../assets/img/medal_10k.gif" *ngIf="message.postedBy.medals.length > 2">
               </ion-row>
 
               <ion-row *ngIf="message.isNew">yeni</ion-row>

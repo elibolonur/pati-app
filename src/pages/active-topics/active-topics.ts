@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoadingController, AlertController } from 'ionic-angular';
 import { PatiService } from '../../providers/pati.service';
+import { Authentication } from '../../providers/auth.service';
 
 @Component({
   selector: 'page-active-topics',
@@ -12,6 +13,7 @@ export class ActiveTopicsPage {
 
   constructor(private alertCtrl: AlertController,
               public loadingCtrl: LoadingController,
+              private auth: Authentication,
               public service: PatiService) {
 
     this.getActiveTopics();
@@ -55,6 +57,10 @@ export class ActiveTopicsPage {
 
   private filterTopics() {
     this.activeTopics = this.activeTopics.filter(x => x.title !== "")
+  }
+
+  logout () {
+    this.auth.logout();
   }
 
 }

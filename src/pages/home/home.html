@@ -1,10 +1,15 @@
 <ion-header>
   <ion-navbar>
     <ion-title text-center>[ Forum Anasayfa ]</ion-title>
+    <ion-buttons end>
+      <button ion-button class="btn-logout" (click)="logout()">
+        <ion-icon name="power"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content overflow-scroll="true">
 
   <ion-refresher (ionRefresh)="getMainPage($event)">
     <ion-refresher-content
@@ -15,8 +20,6 @@
 
   <ion-card no-padding class="area-container">
     <ion-card-content no-padding>
-
-
       <ion-grid class="areas-header" areas-header></ion-grid>
 
       <ion-grid mainpage-area-row [area]="area" *ngFor="let area of favorites"></ion-grid>

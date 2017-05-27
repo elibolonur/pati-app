@@ -502,6 +502,41 @@
   }
 }
 
+.btn-logout {
+  color:  darken($pati_orange, 20%);
+}
+
+.btn-login {
+  background-color: $pati_red;
+  border-radius: 5px;
+
+  &:active, &:focus {
+    background-color: lighten($pati_red, 7%);
+  }
+}
+
+.login-form-container {
+  margin: 10em 0;
+
+  .label {
+    color: $pati_red;
+  }
+}
+
+.api-events-container {
+  h3, h6 {
+    color: $pati_red;
+  }
+
+  hr {
+    height: 1px;
+  }
+
+  .button-inner {
+    color: $pati_red;
+  }
+}
+
 .page-end-text {
   color: $pati_red;
   font-weight: 600;
@@ -537,3 +572,4 @@
 .scroll-content {
   border: 0 !important;
 }
+

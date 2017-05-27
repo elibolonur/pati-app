@@ -9,8 +9,7 @@ export class PatiService {
 
   storage: any;
   apiKey: string;
-  // url: string = "http://localhost:3000";
-  url: string = "https://pati-scraper.herokuapp.com/";
+  url: string = "http://localhost:3000/";
 
 
   constructor(public http: Http, auth: Authentication, storage: Storage) {
@@ -29,7 +28,6 @@ export class PatiService {
           .subscribe(
             res => {
               if (res.success) {
-                // if not logged in send to login
                 resolve(res.data);
               }
               else {
@@ -55,7 +53,6 @@ export class PatiService {
           .subscribe(
             res => {
               if (res.success) {
-                // if not logged in send to login
                 resolve(res.data);
               }
               else {
@@ -81,7 +78,6 @@ export class PatiService {
           .subscribe(
             res => {
               if (res.success) {
-                // if not logged in send to login
                 resolve(res.data);
               }
               else {
@@ -107,7 +103,6 @@ export class PatiService {
           .subscribe(
             res => {
               if (res.success) {
-                // if not logged in send to login
                 resolve(res.data);
               }
               else {
@@ -134,7 +129,6 @@ export class PatiService {
           .subscribe(
             res => {
               if (res.success) {
-                // if not logged in send to login
                 resolve(res.data);
               }
               else {
@@ -161,7 +155,6 @@ export class PatiService {
           .subscribe(
             res => {
               if (res.success) {
-                // if not logged in send to login
                 resolve(res.data);
               }
               else {
@@ -187,7 +180,6 @@ export class PatiService {
           .subscribe(
             res => {
               if (res.success) {
-                // if not logged in send to login
                 resolve(res.data);
               }
               else {

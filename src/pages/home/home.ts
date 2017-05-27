@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController } from 'ionic-angular';
 import { PatiService } from '../../providers/pati.service';
+import { Authentication } from '../../providers/auth.service';
 
 @Component({
   selector: 'page-home',
@@ -24,6 +25,7 @@ export class HomePage {
   moderasyon: any;
 
   constructor(public service: PatiService,
+              private auth: Authentication,
               public loadingCtrl: LoadingController,
               private alertCtrl: AlertController) {
 
@@ -44,7 +46,6 @@ export class HomePage {
         this.areas = data;
         if (this.areas)
           this.filterAreas();
-        // console.log(this.favorites);
         loader.dismissAll();
       },
       (err) => {
@@ -73,5 +74,9 @@ export class HomePage {
     this.oyunsunuculari = this.areas.filter(x => x.areaParent === "oyunsunuculari");
     this.diger = this.areas.filter(x => x.areaParent === "diger");
     this.moderasyon = this.areas.filter(x => x.areaParent === "moderasyon");
+  }
+
+  logout () {
+    this.auth.logout();
   }
 }

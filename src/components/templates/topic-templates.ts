@@ -2,10 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TopicPage } from "../../pages/topic-page/topic";
 
-
-// TO DO
-// Go to lastpage
-// Topic options
+// Template for to show Topic - list item
 
 @Component({
   selector: '[area-topic-row]',
@@ -108,7 +105,7 @@ export class TopicsPageHeader {
     <ion-row align-items-stretch>
 
       <ion-col col-1 class="flex-vertical-center">
-        <img *ngIf="topic.topicType" class="flex-vertical-center" src="../../assets/img/{{topic.topicType}}.gif"/>
+        <img *ngIf="topic.topicType" class="flex-vertical-center" src="../.../../assets/img/{{topic.topicType}}.gif"/>
       </ion-col>
 
       <ion-col col-8 (click)="goToTopic()" class="in-active-topics" tappable>

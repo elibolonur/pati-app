@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController } from 'ionic-angular';
 import { PatiService } from '../../providers/pati.service';
+import { Authentication } from '../../providers/auth.service';
 
 @Component({
   selector: 'page-pm',
@@ -12,6 +13,7 @@ export class PmPage {
 
   constructor(public service: PatiService,
               public loadingCtrl: LoadingController,
+              private auth: Authentication,
               private alertCtrl: AlertController) {
 
     this.getPM();
@@ -47,5 +49,9 @@ export class PmPage {
 
   private filterPms() {
     this.privateMessages = this.privateMessages.filter(x => x.title !== "")
+  }
+
+  logout () {
+    this.auth.logout();
   }
 }

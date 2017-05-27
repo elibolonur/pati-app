@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { PmReadPage } from "../../pages/pm-read/pmread";
 
+// Template for to show Private messages - list item
+
 @Component({
   selector: '[pm-row]',
   host: {'class': 'pm-row'},
