@@ -1,7 +1,5 @@
-Ionic App Base
+Pati-App
 =====================
-
-This is the base template for Ionic starter apps.
 
 ## Using this project
 
